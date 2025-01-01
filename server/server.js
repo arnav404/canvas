@@ -8,8 +8,6 @@ const app = express();
 const http = require('http').createServer(app);
 const wss = new WebSocket.Server({ server: http });
 
-console.log(wss);
-
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../client/build')));
 
@@ -74,5 +72,5 @@ app.post('/upload', upload.single('image'), (req, res) => {
 // Start the HTTP server
 const PORT = process.env.PORT || 5000; // Use the PORT from Heroku or default to 5000
 http.listen(PORT, () => {
-    console.log(`Server started on http://localhost:${PORT}`);
+    console.log(`${wss}`);
 });
